@@ -1,10 +1,16 @@
 const express = require("express");
 const socket = require("socket.io");
 const app = express();
+const path = require("path");
 const cors = require("cors");
 
 app.use(cors());
 app.use(express.json());
+
+app.get('/', function (req, res) {
+  console.log('server magurodev nyala')
+  res.sendFile(path.join(__dirname + "/index.html"))
+})
 
 const server = app.listen("3002", () => {
   console.log("Server Running on Port 3002...");
